@@ -1,7 +1,7 @@
 'use strict';
 
 const {bookingStatus} = require("../utils/common/enums");
-const {INITIATED,PENDING,CANCELED,COMPLETED} = bookingStatus;
+const {INITIATED,PENDING,CANCELED,BOOKED} = bookingStatus;
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
       },
       status: {
         type: Sequelize.ENUM,
-        values:[INITIATED,PENDING,CANCELED,COMPLETED],
+        values:[INITIATED,PENDING,CANCELED,BOOKED],
         defaultValue:INITIATED,
         allowNull:false
       },
