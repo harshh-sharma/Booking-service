@@ -14,6 +14,20 @@ async function createBooking(req,res){
     }
 }
 
+async function getBooking(req,res){
+    try {
+       const {id} = req.params;
+       
+       const booking = await BookingService.getBooking(id);
+       SuccessResponse.data = booking;
+       return res.status(StatusCodes.OK).json(SuccessResponse);
+    } catch (error) {
+        ErrorResponse.error = error;
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ErrorResponse);
+    }
+}
+
 module.exports = {
-    createBooking
+    createBooking,
+    getBooking
 }

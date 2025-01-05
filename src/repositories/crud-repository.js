@@ -22,6 +22,8 @@ class CrudRepository {
   }
 
   async get(data) {
+    console.log("--",data);
+    
     const response = await this.model.findByPk(data);
     if(!response){
         throw new AppError('Airplane is not found with the following id',StatusCodes.NOT_FOUND);
